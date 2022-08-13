@@ -3,7 +3,9 @@ const bodyParser=require('body-parser');
 // const date=require(__dirname+'/date.js')
 const mongoose=require("mongoose")
 const _=require("lodash")
+if(process.env.NODE_ENV!=="production"){
 require('dotenv').config();
+}
 // console.log(date()); //print current day,date,month like friday,july 15
 
 const app=express()
