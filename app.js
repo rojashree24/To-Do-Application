@@ -3,6 +3,7 @@ const bodyParser=require('body-parser');
 // const date=require(__dirname+'/date.js')
 const mongoose=require("mongoose")
 const _=require("lodash")
+require('dotenv').config();
 // console.log(date()); //print current day,date,month like friday,july 15
 
 const app=express()
@@ -20,7 +21,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 
-mongoose.connect("mongodb+srv://RojashreeV:test123@todolist.tnw2pqh.mongodb.net/todolistDB");
+const db=process.env.MONGO_URL
+mongoose.connect(db);
 
 const itemSchema=new mongoose.Schema({
     name:String //field
