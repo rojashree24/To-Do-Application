@@ -23,8 +23,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 
-const db=process.env.MONGO_URL
-mongoose.connect(db);
+// const db=process.env.MONGO_URL
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true
+});
 
 const itemSchema=new mongoose.Schema({
     name:String //field
